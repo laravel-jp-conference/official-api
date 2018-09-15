@@ -26,8 +26,8 @@ func main() {
 	service.Use(middleware.ErrorHandler(service, true))
 	service.Use(middleware.Recover())
 
-	// Mount "conference" controller
-	app.MountConferenceController(service, action.NewConferenceController(service))
+	app.MountTimetableController(service, action.NewTimetableController(service))
+	app.MountInfoController(service, action.NewInfoController(service))
 	ao := retrievePortOption()
 
 	// Start service

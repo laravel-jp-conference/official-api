@@ -1,5 +1,4 @@
 assets/
-app/**
+vendor/
 
-conference
-
+conference-api

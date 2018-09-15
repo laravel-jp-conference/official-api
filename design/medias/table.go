@@ -6,12 +6,12 @@ import (
 	"github.com/ytake/laravel-jp-conference-api/design/types"
 )
 
-var HalMedia = MediaType("application/laravel-jp-conference.hal+json", func() {
+var HalTimetableMedia = MediaType("HalTimetableMedia", func() {
 	Description("for hypermedia application language")
 	ContentType("application/laravel-jp-conference.hal+json; charset=utf-8") // Override default Content-Type header value
 
 	Reference(types.TimetableType)
-	Required("_links", "_embedded")
+	Required("_links", "_embedded", "title", "body", "from_to", "place")
 	Attributes(func() {
 		Attribute("title", String, "講演タイトル")
 		Attribute("body", String, "講演内容")
@@ -35,6 +35,7 @@ var NotFoundMedia = MediaType("application/vnd.error+json", func() {
 	ContentType("application/vnd.error+json; charset=utf-8") // Override default Content-Type header value
 
 	Reference(types.VndErrorType)
+	Required("message", "path", "logref", "_links")
 	Attributes(func() {
 		Attribute("message", String, "error message")
 		Attribute("path", String, "error request uri")
