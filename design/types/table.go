@@ -14,7 +14,7 @@ var TimetableType = Type("TimetableType", func() {
 	Member("place", String, "ホール")
 })
 
-var VndErrorType = Type("VndErrorType", func(){
+var VndErrorType = Type("VndErrorType", func() {
 	Member("message", String)
 	Member("path", String)
 	Member("logref", Integer)

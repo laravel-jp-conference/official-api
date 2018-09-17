@@ -28,6 +28,7 @@ func main() {
 
 	app.MountTimetableController(service, action.NewTimetableController(service))
 	app.MountInfoController(service, action.NewInfoController(service))
+	app.MountSponsorsController(service, action.NewSponsorsController(service))
 	ao := retrievePortOption()
 
 	// Start service

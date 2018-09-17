@@ -1,6 +1,7 @@
 package foundation
 
 const (
+	// ApplicationPort Application Server Default port
 	ApplicationPort = "8080"
 	ErrorMessage    = "coming soon"
 	ConferenceURL   = "https://conference2019.laravel.jp"
@@ -14,6 +15,7 @@ const (
 	ConferenceName  = "Laravel JP Conference"
 )
 
+// FindHallNote カンファレンスホール
 func FindHallNote() *string {
 	s := HallNote
 	return &s

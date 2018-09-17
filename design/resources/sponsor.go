@@ -7,20 +7,20 @@ import (
 	"net/http"
 )
 
-var _ = Resource("timetable", func() {
+var _ = Resource("sponsors", func() {
 	Origin("*", func() {
 		Methods("GET")
 		Headers("Origin", "X-Requested-With", "Content-Type", "Accept")
 	})
-	DefaultMedia(medias.HalTimetableMedia)
-	Action("tables", func() {
-		Routing(GET("tables"))
+	DefaultMedia(medias.HalSponsorMedia)
+	Action("sponsors", func() {
+		Routing(GET("sponsors"))
 		Description("the response body")
 		Response(OK, func() {
 			Description("This is the success response")
 		})
 
-		Response("TimetableNotFound", func() {
+		Response("SponsorNotFound", func() {
 			Description("Not found response")
 			Media(medias.NotFoundMedia)
 			Status(http.StatusNotFound)

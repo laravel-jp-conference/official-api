@@ -4,7 +4,6 @@ import (
 	"github.com/goadesign/goa"
 	"github.com/ytake/laravel-jp-conference-api/app"
 	"github.com/ytake/laravel-jp-conference-api/foundation"
-	"net/url"
 )
 
 // TimetableController implements the timetable resource.
@@ -17,10 +16,10 @@ func NewTimetableController(service *goa.Service) *TimetableController {
 	return &TimetableController{Controller: service.NewController("TimetableController")}
 }
 
-// Table runs the table action.
-func (c *TimetableController) Table(ctx *app.TableTimetableContext) error {
+// Tables タイムテーブル情報
+func (c *TimetableController) Tables(ctx *app.TablesTimetableContext) error {
 	// TimetableController_Table: start_implement
-
+	a := &foundation.RequestAction{Request: ctx.Request}
 	// Put your logic here
 	return ctx.TimetableNotFound(&app.Error{
 		Links: &app.VndLinkType{
@@ -30,16 +29,7 @@ func (c *TimetableController) Table(ctx *app.TableTimetableContext) error {
 		},
 		Logref:  44,
 		Message: foundation.ErrorMessage,
-		Path:    resolveRequestURI(ctx).String(),
+		Path:    a.ResolveRequestURI().String(),
 	})
 	// TimetableController_Table: end_implement
-}
-
-func resolveRequestURI(ctx *app.TableTimetableContext) (uv *url.URL) {
-	uv, _ = url.Parse(ctx.URL.String())
-	uv.Scheme = string("https")
-	uv.Path = ctx.URL.Path
-	uv.Host = ctx.Host
-	uv.RawQuery = ""
-	return
 }
