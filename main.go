@@ -1,4 +1,4 @@
-//go:generate goagen bootstrap -d github.com/ytake/laravel-jp-conference-api/design
+//go:generate goagen bootstrap -d github.com/laravel-jp-conference/official-api/design
 
 package main
 
@@ -7,18 +7,19 @@ import (
 	"fmt"
 	"github.com/goadesign/goa"
 	"github.com/goadesign/goa/middleware"
-	"github.com/ytake/laravel-jp-conference-api/action"
-	"github.com/ytake/laravel-jp-conference-api/app"
-	"github.com/ytake/laravel-jp-conference-api/foundation"
+	"github.com/laravel-jp-conference/official-api/action"
+	"github.com/laravel-jp-conference/official-api/app"
+	"github.com/laravel-jp-conference/official-api/foundation"
 )
 
 type AppConfig struct {
-	Port *string
+	Port        *string
+	NeedSwagger *bool
 }
 
 func main() {
 	// Create service
-	service := goa.New("laravel-jp-conference-api")
+	service := goa.New("official-api")
 
 	// Mount middleware
 	service.Use(middleware.RequestID())
@@ -29,7 +30,11 @@ func main() {
 	app.MountTimetableController(service, action.NewTimetableController(service))
 	app.MountInfoController(service, action.NewInfoController(service))
 	app.MountSponsorsController(service, action.NewSponsorsController(service))
+
 	ao := retrievePortOption()
+	if *ao.NeedSwagger {
+		app.MountSwaggerController(service, action.NewSwaggerController(service))
+	}
 
 	// Start service
 	if err := service.ListenAndServe(fmt.Sprintf(":%s", *ao.Port)); err != nil {
@@ -40,8 +45,10 @@ func main() {
 func retrievePortOption() *AppConfig {
 	var (
 		port string
+		needSwagger  bool
 	)
 	flag.StringVar(&port, "port", foundation.ApplicationPort, "port number option")
+	flag.BoolVar(&needSwagger, "needSwagger", false, "need swagger ui")
 	flag.Parse()
-	return &AppConfig{&port}
+	return &AppConfig{&port, &needSwagger}
 }

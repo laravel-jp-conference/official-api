@@ -1,0 +1,337 @@
+consumes:
+- application/json
+- application/xml
+- application/gob
+- application/x-gob
+definitions:
+  EmbeddedPlaceResponseType:
+    example:
+      places:
+        _links:
+          self:
+            href: Numquam tempora est.
+        address: Voluptas in.
+        latitude: Soluta possimus quod.
+        longitude: Qui dolorem et adipisci.
+        name: Eius eos odit mollitia sit asperiores.
+        note: Quo aut iusto sed voluptas ipsam.
+    properties:
+      places:
+        $ref: '#/definitions/PlaceCollectType'
+    required:
+    - places
+    title: EmbeddedPlaceResponseType
+    type: object
+  Error:
+    description: for hypermedia application language (default view)
+    example:
+      _links:
+        about:
+          href: Numquam tempora est.
+      logref: 4.759970761553682e+18
+      message: Perferendis sint voluptatum blanditiis.
+      path: Quidem aliquid.
+    properties:
+      _links:
+        $ref: '#/definitions/VndLinkType'
+      logref:
+        description: code
+        example: 4.759970761553682e+18
+        format: int64
+        type: integer
+      message:
+        description: error message
+        example: Perferendis sint voluptatum blanditiis.
+        type: string
+      path:
+        description: error request uri
+        example: Quidem aliquid.
+        type: string
+    required:
+    - message
+    - path
+    - logref
+    - _links
+    title: 'Mediatype identifier: application/vnd.error+json; view=default'
+    type: object
+  HalLinkSpeakerType:
+    example:
+      self-facebook:
+        self:
+          href: Numquam tempora est.
+      self-github:
+        self:
+          href: Numquam tempora est.
+      self-twitter:
+        href: Numquam tempora est.
+    properties:
+      self-facebook:
+        $ref: '#/definitions/HalLinkType'
+      self-github:
+        $ref: '#/definitions/HalLinkType'
+      self-twitter:
+        $ref: '#/definitions/HalLinkUnitType'
+    title: HalLinkSpeakerType
+    type: object
+  HalLinkType:
+    example:
+      self:
+        href: Numquam tempora est.
+    properties:
+      self:
+        $ref: '#/definitions/HalLinkUnitType'
+    required:
+    - self
+    title: HalLinkType
+    type: object
+  HalLinkUnitType:
+    example:
+      href: Numquam tempora est.
+    properties:
+      href:
+        default: ""
+        description: for Hyper Reference
+        example: Numquam tempora est.
+        type: string
+    required:
+    - href
+    title: HalLinkUnitType
+    type: object
+  Halinfomedia:
+    description: for hypermedia application language (default view)
+    example:
+      _embedded:
+        places:
+          _links:
+            self:
+              href: Numquam tempora est.
+          address: Voluptas in.
+          latitude: Soluta possimus quod.
+          longitude: Qui dolorem et adipisci.
+          name: Eius eos odit mollitia sit asperiores.
+          note: Quo aut iusto sed voluptas ipsam.
+      _links:
+        self:
+          href: Numquam tempora est.
+      date: Mollitia autem.
+      name: Repellat repudiandae sequi placeat perspiciatis porro.
+    properties:
+      _embedded:
+        $ref: '#/definitions/EmbeddedPlaceResponseType'
+      _links:
+        $ref: '#/definitions/HalLinkType'
+      date:
+        description: 開催日時
+        example: Mollitia autem.
+        type: string
+      name:
+        description: カンファレンス名
+        example: Repellat repudiandae sequi placeat perspiciatis porro.
+        type: string
+    required:
+    - _links
+    - _embedded
+    - name
+    - date
+    title: 'Mediatype identifier: halinfomedia; view=default'
+    type: object
+  Halsponsormedia:
+    description: for hypermedia application language (default view)
+    example:
+      _embedded: Error et quas modi.
+      _links:
+        self:
+          href: Numquam tempora est.
+      count: 5.689690427971686e+18
+    properties:
+      _embedded:
+        example: Error et quas modi.
+        type: string
+      _links:
+        $ref: '#/definitions/HalLinkType'
+      count:
+        description: スポンサー数
+        example: 5.689690427971686e+18
+        format: int64
+        type: integer
+    required:
+    - _links
+    - _embedded
+    - count
+    title: 'Mediatype identifier: halsponsormedia; view=default'
+    type: object
+  Haltimetablemedia:
+    description: for hypermedia application language (default view)
+    example:
+      _embedded:
+        self-facebook:
+          self:
+            href: Numquam tempora est.
+        self-github:
+          self:
+            href: Numquam tempora est.
+        self-twitter:
+          href: Numquam tempora est.
+      _links:
+        self:
+          href: Numquam tempora est.
+      body: Saepe doloribus dolores.
+      from_to: Et qui tempora dolores nihil voluptates.
+      place: Vel rerum eveniet itaque.
+      title: Corrupti quo.
+    properties:
+      _embedded:
+        $ref: '#/definitions/HalLinkSpeakerType'
+      _links:
+        $ref: '#/definitions/HalLinkType'
+      body:
+        description: 講演内容
+        example: Saepe doloribus dolores.
+        type: string
+      from_to:
+        description: 講演時間
+        example: Et qui tempora dolores nihil voluptates.
+        type: string
+      place:
+        description: ホール
+        example: Vel rerum eveniet itaque.
+        type: string
+      title:
+        description: 講演タイトル
+        example: Corrupti quo.
+        type: string
+    required:
+    - _links
+    - _embedded
+    - title
+    - body
+    - from_to
+    - place
+    title: 'Mediatype identifier: haltimetablemedia; view=default'
+    type: object
+  PlaceCollectType:
+    example:
+      _links:
+        self:
+          href: Numquam tempora est.
+      address: Voluptas in.
+      latitude: Soluta possimus quod.
+      longitude: Qui dolorem et adipisci.
+      name: Eius eos odit mollitia sit asperiores.
+      note: Quo aut iusto sed voluptas ipsam.
+    properties:
+      _links:
+        $ref: '#/definitions/HalLinkType'
+      address:
+        description: 住所
+        example: Voluptas in.
+        type: string
+      latitude:
+        description: 緯度
+        example: Soluta possimus quod.
+        type: string
+      longitude:
+        description: 軽度
+        example: Qui dolorem et adipisci.
+        type: string
+      name:
+        description: 会場名
+        example: Eius eos odit mollitia sit asperiores.
+        type: string
+      note:
+        description: 備考
+        example: Quo aut iusto sed voluptas ipsam.
+        type: string
+    required:
+    - _links
+    - name
+    - address
+    - latitude
+    - longitude
+    title: PlaceCollectType
+    type: object
+  VndLinkType:
+    example:
+      about:
+        href: Numquam tempora est.
+    properties:
+      about:
+        $ref: '#/definitions/HalLinkUnitType'
+    required:
+    - about
+    title: VndLinkType
+    type: object
+host: localhost:8080
+info:
+  description: A teaser for goa
+  title: The adder API
+  version: ""
+paths:
+  /info:
+    get:
+      description: the response body
+      operationId: info#info
+      produces:
+      - halinfomedia
+      responses:
+        "200":
+          description: This is the success response
+          schema:
+            $ref: '#/definitions/Halinfomedia'
+        "404":
+          description: Not found response
+      schemes:
+      - http
+      summary: info info
+      tags:
+      - info
+  /sponsors:
+    get:
+      description: the response body
+      operationId: sponsors#sponsors
+      produces:
+      - application/vnd.error+json
+      - halsponsormedia
+      responses:
+        "200":
+          description: This is the success response
+          schema:
+            $ref: '#/definitions/Halsponsormedia'
+        "404":
+          description: Not found response
+          schema:
+            $ref: '#/definitions/Error'
+      schemes:
+      - http
+      summary: sponsors sponsors
+      tags:
+      - sponsors
+  /tables:
+    get:
+      description: the response body
+      operationId: timetable#tables
+      produces:
+      - application/vnd.error+json
+      - haltimetablemedia
+      responses:
+        "200":
+          description: This is the success response
+          schema:
+            $ref: '#/definitions/Haltimetablemedia'
+        "404":
+          description: Not found response
+          schema:
+            $ref: '#/definitions/Error'
+      schemes:
+      - http
+      summary: tables timetable
+      tags:
+      - timetable
+produces:
+- application/json
+- application/xml
+- application/gob
+- application/x-gob
+schemes:
+- http
+swagger: "2.0"

@@ -2,8 +2,8 @@
 
 .PHONY: code-gen
 code-gen:
-	goagen app -d github.com/ytake/laravel-jp-conference-api/design
-	goagen controller -d github.com/ytake/laravel-jp-conference-api/design -o action
+	goagen app -d github.com/laravel-jp-conference/official-api/design
+	goagen controller -d github.com/laravel-jp-conference/official-api/design -o action
 
 .PHONY: prod-build
 prod-build: code-gen
@@ -11,4 +11,5 @@ prod-build: code-gen
 
 .PHONY: swagger-gen
 swagger-gen:
-	goagen swagger --design github.com/ytake/laravel-jp-conference-api/design
+	goagen swagger -d github.com/laravel-jp-conference/official-api/design -o ./public/
+

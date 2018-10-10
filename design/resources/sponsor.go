@@ -3,7 +3,7 @@ package resources
 import (
 	. "github.com/goadesign/goa/design"
 	. "github.com/goadesign/goa/design/apidsl"
-	"github.com/ytake/laravel-jp-conference-api/design/medias"
+	"github.com/laravel-jp-conference/official-api/design/medias"
 	"net/http"
 )
 

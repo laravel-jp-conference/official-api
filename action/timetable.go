@@ -2,8 +2,8 @@ package action
 
 import (
 	"github.com/goadesign/goa"
-	"github.com/ytake/laravel-jp-conference-api/app"
-	"github.com/ytake/laravel-jp-conference-api/foundation"
+	"github.com/laravel-jp-conference/official-api/app"
+	"github.com/laravel-jp-conference/official-api/foundation"
 )
 
 // TimetableController implements the timetable resource.

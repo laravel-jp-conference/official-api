@@ -2,8 +2,8 @@ package action
 
 import (
 	"github.com/goadesign/goa"
-	"github.com/ytake/laravel-jp-conference-api/app"
-	"github.com/ytake/laravel-jp-conference-api/foundation"
+	"github.com/laravel-jp-conference/official-api/app"
+	"github.com/laravel-jp-conference/official-api/foundation"
 )
 
 // InfoController implements the info resource.
@@ -11,7 +11,7 @@ type InfoController struct {
 	*goa.Controller
 }
 
-// NewInfoController creates a info controller.
+// NewInfoController creates a info controller.z
 func NewInfoController(service *goa.Service) *InfoController {
 	return &InfoController{Controller: service.NewController("InfoController")}
 }

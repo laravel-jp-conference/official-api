@@ -3,11 +3,11 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:e6db1ea2b722b4995be83bf63924db1f702cef84eeb38a430a03ef3ae8f5439e"
+  digest = "1:ceb9dbcca57204e8a431a81f367c16b4c8ebeda57204f2dbbe0ac399f13bd0ee"
   name = "github.com/armon/go-metrics"
   packages = ["."]
   pruneopts = "T"
-  revision = "3c58d8115a78a6879e5df75ae900846768d36895"
+  revision = "f0300d1749da6fa982027e449ec0c7a145510c3c"
 
 [[projects]]
   branch = "master"
@@ -85,11 +85,11 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:a42c6aed51ed8b42dae608760a24ce53b799ede0c31637dfcbf1116cd0c23b03"
+  digest = "1:7ff5056f10950fb6a5ec613a91d161313439528b2f765cfaff9e1405a96dcb63"
   name = "golang.org/x/net"
   packages = ["websocket"]
   pruneopts = "T"
-  revision = "26e67e76b6c3f6ce91f7c52def5af501b4e0f3a2"
+  revision = "146acd28ed5894421fb5aac80ca93bc1b1f46f87"
 
 [solve-meta]
   analyzer-name = "dep"
